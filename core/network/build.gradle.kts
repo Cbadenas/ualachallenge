@@ -45,9 +45,6 @@ dependencies {
     implementation(libs.material)
 
     testImplementation(libs.junit)
-//    testImplementation(libs.junit.jupiter.api)
-//    testRuntimeOnly(libs.junit.jupiter.engine)
-//    testImplementation(libs.junit.jupiter.params)
     testImplementation(libs.kotlinx.coroutines.test)
 
     testImplementation(libs.mockk)
