@@ -29,6 +29,21 @@ class CityRepositoryAdapter @Inject constructor(
         }
     }
 
+
+//    ● We define a prefix string as: a substring that matches the initial characters of the
+//    target string. For instance, assume the following entries:
+//    ○ Alabama, US
+//    ○ Albuquerque, US
+//    ○ Anaheim, US
+//    ○ Arizona, US
+//    ○ Sydney, AU
+//
+//    www.uala.com.ar
+//
+//    ● If the given prefix is "A", all cities but Sydney should appear. Contrariwise, if the given
+//    prefix is "s", the only result should be "Sydney, AU".
+//    ● If the given prefix is "Al", "Alabama, US" and "Albuquerque, US" are the only results.
+//    ● If the prefix given is "Alb" then the only result is "Albuquerque, US"
     override suspend fun getCityByCreiteria(criteria: String): Result<List<City>> {
         return try {
             val cities = dataSource.getCities().map { it.toDomain() }
