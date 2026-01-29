@@ -10,6 +10,10 @@
   
 ## added
 - Initial commit. Initial Architecture created. Add cities.json file to network module.
+- CitiesDataSource was added.
+  - Change the way the repositories consumes and returns cities info.
+  - getCityByCreiteria was added.
+  - Tests were added.
 
 
 
