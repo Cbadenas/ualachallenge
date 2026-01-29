@@ -1,18 +1,15 @@
 package com.ualachallenge.network.adapters
 
-import android.app.Application
 import com.ualachallenge.domain.City
-import com.ualachallenge.network.dto.CityDto
+import com.ualachallenge.network.CitiesDataSource
 import com.ualachallenge.network.mapper.toDomain
 import com.ualachallenge.ports.CityRepositoryPort
-import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class CityRepositoryAdapter @Inject constructor(
-    private val application: Application,
-    private val json: Json
+    private val dataSource: CitiesDataSource
 ) : CityRepositoryPort {
 
     private var cachedCities: List<City>? = null
@@ -23,19 +20,20 @@ class CityRepositoryAdapter @Inject constructor(
             return Result.success(it)
         }
         return try {
+            val cities = dataSource.getCities().map { it.toDomain() }
+            cachedCities = cities
 
-            val jsonString = application.assets.open("cities.json")
-                .bufferedReader()
-                .use { it.readText() }
-
-            val citiesDto = json.decodeFromString<List<CityDto>>(jsonString)
-
-            val cityList = citiesDto.map { it.toDomain() }
-
-            cachedCities = cityList
-            Result.success(cityList)
+            return Result.success(cities)
         } catch (e: Exception) {
-            Result.failure(e)
+            return Result.failure(e)
         }
     }
+
+    override suspend fun getCityByCreiteria(criteria: String): Result<List<City>> {
+
+        val filteredCities = dataSource.getCities().map { it.toDomain() }
+
+        return Result.success(filteredCities)
+    }
+
 }

@@ -2,6 +2,7 @@ package com.ualachallenge.network.adapters
 
 import android.app.Application
 import android.content.res.AssetManager
+import com.ualachallenge.network.CitiesDataSource
 import com.ualachallenge.network.dto.CityDto
 import com.ualachallenge.network.dto.CoordDto
 import io.mockk.every
@@ -19,6 +20,7 @@ class CityRepositoryAdapterTest {
     val mockAssetManager = mockk<AssetManager>()
     private lateinit var json: Json
     private lateinit var adapter: CityRepositoryAdapter
+    private lateinit var mockCitiesDataSource: CitiesDataSource
 
     @Before
     fun setUp() {
@@ -43,12 +45,19 @@ class CityRepositoryAdapterTest {
         every { mockApplication.assets } returns mockAssetManager
         every { mockAssetManager.open("cities.json") } returns inputStream
 
-        adapter = CityRepositoryAdapter(mockApplication, json)
+        mockCitiesDataSource = CitiesDataSource(mockApplication, json)
+        adapter = CityRepositoryAdapter(mockCitiesDataSource)
     }
 
     @Test
     fun `getCities should return a list of cities`() = runTest {
         val cities = adapter.getCities()
+        assertNotNull(cities)
+    }
+
+    @Test
+    fun `getCitiesByCriteria should return a list of cities`() = runTest {
+        val cities = adapter.getCityByCreiteria("")
         assertNotNull(cities)
     }
 
