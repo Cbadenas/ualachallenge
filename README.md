@@ -7,11 +7,7 @@
   - Por que ?
     - Pense el proyecto como la base de una implementacion aun mayor.
 
-- El codigo se fue construyendo usando TDD.
-  - 
-
-
-
+  
 ## added
 - Initial commit. Initial Architecture created. Add cities.json file to network module.
 
