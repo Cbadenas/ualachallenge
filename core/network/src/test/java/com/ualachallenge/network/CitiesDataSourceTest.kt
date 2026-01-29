@@ -1,8 +1,9 @@
-package com.ualachallenge.network.adapters
+package com.ualachallenge.network
 
 import android.app.Application
 import android.content.res.AssetManager
 import com.ualachallenge.network.CitiesDataSource
+import com.ualachallenge.network.adapters.CityRepositoryAdapter
 import com.ualachallenge.network.dto.CityDto
 import com.ualachallenge.network.dto.CoordDto
 import io.mockk.every
@@ -14,12 +15,11 @@ import org.junit.Before
 import org.junit.Test
 import kotlin.test.assertEquals
 
-class CityRepositoryAdapterTest {
+class CitiesDataSourceTest {
 
     val mockApplication = mockk<Application>()
     val mockAssetManager = mockk<AssetManager>()
     private lateinit var json: Json
-    private lateinit var adapter: CityRepositoryAdapter
     private lateinit var mockCitiesDataSource: CitiesDataSource
 
     @Before
@@ -46,25 +46,20 @@ class CityRepositoryAdapterTest {
         every { mockAssetManager.open("cities.json") } returns inputStream
 
         mockCitiesDataSource = CitiesDataSource(mockApplication, json)
-        adapter = CityRepositoryAdapter(mockCitiesDataSource)
     }
 
+    //CHECK THAT THE DATASOURCE RETURNS SOMETHING
     @Test
-    fun `getCities should return a list of cities`() = runTest {
-        val cities = adapter.getCities()
+    fun `DataSource getCities should return a list of cities`() = runTest {
+        val cities = mockCitiesDataSource.getCities()
         assertNotNull(cities)
     }
 
+    //CHECK THAT THE DATASOURCE RETURNS VALUES
     @Test
-    fun `getCitiesByCriteria should return a list of cities`() = runTest {
-        val cities = adapter.getCityByCreiteria("")
-        assertNotNull(cities)
-    }
-
-    @Test
-    fun `DataSource getCitiesByCriteria should return a list of cities filtered by criteria`() = runTest {
-        val cities = adapter.getCityByCreiteria("Ci")
-        assertNotNull(cities)
+    fun `DataSource getCities should return a not empty list of cities`() = runTest {
+        val cities = mockCitiesDataSource.getCities()
+        assert(cities.isNotEmpty())
     }
 
 }

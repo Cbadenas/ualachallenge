@@ -1,18 +1,15 @@
 package com.ualachallenge.network.adapters
 
-import android.app.Application
 import com.ualachallenge.domain.City
-import com.ualachallenge.network.dto.CityDto
+import com.ualachallenge.network.CitiesDataSource
 import com.ualachallenge.network.mapper.toDomain
 import com.ualachallenge.ports.CityRepositoryPort
-import kotlinx.serialization.json.Json
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
 class CityRepositoryAdapter @Inject constructor(
-    private val application: Application,
-    private val json: Json
+    private val dataSource: CitiesDataSource
 ) : CityRepositoryPort {
 
     private var cachedCities: List<City>? = null
@@ -23,19 +20,41 @@ class CityRepositoryAdapter @Inject constructor(
             return Result.success(it)
         }
         return try {
+            val cities = dataSource.getCities().map { it.toDomain() }
+            cachedCities = cities
 
-            val jsonString = application.assets.open("cities.json")
-                .bufferedReader()
-                .use { it.readText() }
-
-            val citiesDto = json.decodeFromString<List<CityDto>>(jsonString)
-
-            val cityList = citiesDto.map { it.toDomain() }
-
-            cachedCities = cityList
-            Result.success(cityList)
+            return Result.success(cities)
         } catch (e: Exception) {
-            Result.failure(e)
+            return Result.failure(e)
         }
     }
+
+
+//    ● We define a prefix string as: a substring that matches the initial characters of the
+//    target string. For instance, assume the following entries:
+//    ○ Alabama, US
+//    ○ Albuquerque, US
+//    ○ Anaheim, US
+//    ○ Arizona, US
+//    ○ Sydney, AU
+//
+//    www.uala.com.ar
+//
+//    ● If the given prefix is "A", all cities but Sydney should appear. Contrariwise, if the given
+//    prefix is "s", the only result should be "Sydney, AU".
+//    ● If the given prefix is "Al", "Alabama, US" and "Albuquerque, US" are the only results.
+//    ● If the prefix given is "Alb" then the only result is "Albuquerque, US"
+    override suspend fun getCityByCreiteria(criteria: String): Result<List<City>> {
+        return try {
+            val cities = dataSource.getCities().map { it.toDomain() }
+
+            val filteredCities = cities.filter { it.name.startsWith(criteria) }
+
+            return Result.success(filteredCities)
+        } catch (e: Exception) {
+            return Result.failure(e)
+        }
+
+    }
+
 }
