@@ -30,10 +30,16 @@ class CityRepositoryAdapter @Inject constructor(
     }
 
     override suspend fun getCityByCreiteria(criteria: String): Result<List<City>> {
+        return try {
+            val cities = dataSource.getCities().map { it.toDomain() }
 
-        val filteredCities = dataSource.getCities().map { it.toDomain() }
+            val filteredCities = cities.filter { it.name.startsWith(criteria) }
 
-        return Result.success(filteredCities)
+            return Result.success(filteredCities)
+        } catch (e: Exception) {
+            return Result.failure(e)
+        }
+
     }
 
 }
