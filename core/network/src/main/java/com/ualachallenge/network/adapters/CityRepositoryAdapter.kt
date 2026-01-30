@@ -1,6 +1,6 @@
 package com.ualachallenge.network.adapters
 
-import com.ualachallenge.domain.City
+import com.ualachallenge.domain.city.City
 import com.ualachallenge.network.CitiesDataSource
 import com.ualachallenge.network.mapper.toDomain
 import com.ualachallenge.ports.CityRepositoryPort

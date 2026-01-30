@@ -1,7 +1,7 @@
 package com.ualachallenge.network.mapper
 
-import com.ualachallenge.domain.City
-import com.ualachallenge.domain.Coord
+import com.ualachallenge.domain.city.City
+import com.ualachallenge.domain.city.Coord
 import com.ualachallenge.network.dto.CityDto
 
 fun CityDto.toDomain(): City {
