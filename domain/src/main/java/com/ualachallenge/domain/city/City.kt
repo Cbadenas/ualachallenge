@@ -1,4 +1,4 @@
-package com.ualachallenge.domain
+package com.ualachallenge.domain.city
 
 data class City(
     val country: String,
