@@ -12,6 +12,8 @@
     entre los viewmodels y los repos. Si en el futuro los usecase requieren de logica mas compleja,
     la idea seria que los responsables sean estos usecases.
 
+- ViewModel
+  - Para la conexion entre la vista y el viewmodel, decidi usar el patron MVI.
 
   
 ## added
@@ -21,6 +23,10 @@
   - getCityByCreiteria was added.
   - Tests were added.
 - Usecases for getting all cities and filtered cities were added
+- List of Cities screen was added.
+  - ViewModel to connect View with Usecase was created
+  - All compoents were connected
+  
 
 
 

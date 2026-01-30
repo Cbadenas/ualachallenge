@@ -1,8 +1,9 @@
 package com.ualachallenge.di
 
+import com.ualachallenge.domain.city.GetAllCitiesUseCase
+import com.ualachallenge.domain.city.GetCitiesByCriteriaUsecase
 import com.ualachallenge.network.adapters.CityRepositoryAdapter
 import com.ualachallenge.ports.CityRepositoryPort
-import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class CityModule {
+object CityModule {
 
     @Provides
     @Singleton
@@ -25,8 +26,8 @@ abstract class CityModule {
         }
     }
 
-    @Binds
-    @Singleton
-    abstract fun bindCityRepository(impl: CityRepositoryAdapter): CityRepositoryPort
+    @Provides fun provideCitiesUsecase(repo: CityRepositoryPort) = GetAllCitiesUseCase(repo)
+
+    @Provides fun provideSearchByCriteriaCitiesUsecase(repo: CityRepositoryPort) = GetCitiesByCriteriaUsecase(repo)
 
 }
