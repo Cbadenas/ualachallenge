@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace = "com.ualachallenge"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.ualachallenge"
         minSdk = 26
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
@@ -41,13 +41,17 @@ android {
     buildFeatures {
         compose = true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
+    }
 }
 
 dependencies {
 
     implementation(project(":core:network"))
     implementation(project(":domain"))
-    implementation(project(":feature"))
+    implementation(project(":feature:location"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)

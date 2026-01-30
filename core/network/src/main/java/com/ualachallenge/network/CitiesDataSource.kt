@@ -25,7 +25,9 @@ class CitiesDataSource @Inject constructor(
                 .bufferedReader()
                 .use { it.readText() }
 
-            return json.decodeFromString<List<CityDto>>(jsonString)
+            cachedCities = json.decodeFromString<List<CityDto>>(jsonString)
+
+            return cachedCities.orEmpty()
 
         } catch (e: Exception) {
             //TODO: We should catch errors
