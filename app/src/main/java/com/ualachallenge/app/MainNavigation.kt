@@ -43,8 +43,8 @@ fun MainNavigation(
         ) { backStackEntry ->
             // Extrae los argumentos de la ruta de navegación
             val arguments = requireNotNull(backStackEntry.arguments)
-            val lat = arguments.getDouble("lat")
-            val lon = arguments.getDouble("lon")
+            val lat = arguments.getFloat("lat").toDouble()
+            val lon = arguments.getFloat("lon").toDouble()
             val name = arguments.getString("name")
 
             MapScreen(
