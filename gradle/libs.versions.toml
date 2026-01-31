@@ -22,6 +22,9 @@ mockk = "1.13.11"
 
 composeCompiler = "1.7.1"
 
+maps-compose = "4.4.1"
+play-services-maps = "20.0.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -52,6 +55,11 @@ kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-cor
 mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
 
 androidx-compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+
+
+maps-compose = { group = "com.google.maps.android", name = "maps-compose", version.ref = "maps-compose" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "play-services-maps" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -9,6 +9,6 @@ fun CityDto.toDomain(): City {
         id = this.id,
         name = this.name,
         country = this.country,
-        coord = Coord(this.coord.lat, this.coord.lon)
+        coord = Coord(this.coord.lon, this.coord.lat)
     )
 }
