@@ -1,5 +1,6 @@
 package com.ualachallenge.location.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
@@ -22,7 +23,9 @@ fun CitiesList(cities: List<City>, onCityClick: (City) -> Unit) {
             ListItem(
                 headlineContent = { Text(city.name) },
                 supportingContent = { Text(city.country) },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onCityClick(city) }
             )
         }
     }

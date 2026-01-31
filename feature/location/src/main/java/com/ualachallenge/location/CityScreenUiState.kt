@@ -11,5 +11,7 @@ data class CityScreenUiState(
     val criteria: String = "",
     val filteredCities: List<City> = emptyList(),
 
+    val selectedCity: City? = null,
+
     val error: String? = null
 )

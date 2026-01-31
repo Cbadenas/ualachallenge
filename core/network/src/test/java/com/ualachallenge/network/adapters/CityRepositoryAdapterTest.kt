@@ -12,6 +12,7 @@ import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.json.Json
 import org.junit.Before
 import org.junit.Test
+import kotlin.jvm.optionals.getOrNull
 import kotlin.test.assertEquals
 
 class CityRepositoryAdapterTest {
@@ -56,15 +57,26 @@ class CityRepositoryAdapterTest {
     }
 
     @Test
-    fun `getCitiesByCriteria should return a list of cities`() = runTest {
-        val cities = adapter.getCityByCreiteria("")
-        assertNotNull(cities)
+    fun `DataSource getCitiesByCriteria should return a success response`() = runTest {
+        val result = adapter.getCityByCreiteria("Ci")
+        assert(result.isSuccess)
     }
 
     @Test
-    fun `DataSource getCitiesByCriteria should return a list of cities filtered by criteria`() = runTest {
-        val cities = adapter.getCityByCreiteria("Ci")
+    fun `DataSource getCitiesByCriteria should return a list of cities`() = runTest {
+        val result = adapter.getCityByCreiteria("Ci")
+        val cities = result.getOrNull()
         assertNotNull(cities)
+        assert(cities!!.isNotEmpty())
+    }
+
+    @Test
+    fun `DataSource getCitiesByCriteria should return a list of cities with the correct criteria`() = runTest {
+        val expectedCityName = "Ciudad Jardín"
+        val result = adapter.getCityByCreiteria("Ci")
+        val cities = result.getOrNull()
+        assertNotNull(cities)
+        assertEquals(cities!![0].name, expectedCityName)
     }
 
 }

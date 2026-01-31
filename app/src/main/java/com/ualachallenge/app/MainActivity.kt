@@ -1,5 +1,6 @@
-package com.ualachallenge
+package com.ualachallenge.app
 
+import MainNavigation
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -10,10 +11,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.ualachallenge.location.SearchCitiesScreen
 import com.ualachallenge.ui.theme.UalaChallengeTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,15 +23,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             UalaChallengeTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    SearchCitiesScreen(
-                        modifier = Modifier
-                            .windowInsetsPadding(WindowInsets.safeDrawing)
-                            .padding(innerPadding)
-                    ) {
-                        // WIP - Debo implementar la navegación para ver el mapa en caso de tomar
-                        //       esa decision.
-                    }
+                Scaffold(modifier = Modifier.Companion.fillMaxSize()) { innerPadding ->
+                    MainNavigation(
+                        modifier = Modifier.padding(innerPadding)
+                    )
                 }
             }
         }

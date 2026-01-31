@@ -73,4 +73,7 @@ dependencies {
     kapt(libs.hilt.compiler)
 
     implementation(libs.serialization.json)
+
+    implementation(libs.androidx.hilt.navigation)
+
 }

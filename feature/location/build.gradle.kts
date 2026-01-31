@@ -73,4 +73,7 @@ dependencies {
 
     implementation(libs.serialization.json)
     testImplementation(kotlin("test"))
+
+    implementation(libs.maps.compose)
+    implementation(libs.play.services.maps)
 }

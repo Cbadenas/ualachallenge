@@ -13,6 +13,7 @@ import androidx.compose.ui.text.style.TextAlign
 import com.ualachallenge.domain.city.City
 import com.ualachallenge.location.CityScreenEvent
 import com.ualachallenge.location.CityScreenUiState
+import com.ualachallenge.location.map.MapScreen
 
 @Composable
 fun LandscapeLayout(
@@ -37,11 +38,14 @@ fun LandscapeLayout(
                 .fillMaxHeight(),
             contentAlignment = Alignment.Center
         ) {
-            // WIP - Falta implementar el mapa. Por ahora, un texto de ejemplo.
-            //       Tengo que decidir como implementar el mapa en este modo
-            //       y ver si en vertical, crear una navegacion o no.
             if (selectedCity != null) {
-                Text("Mapa para: ${selectedCity.name}", textAlign = TextAlign.Center)
+                MapScreen(
+                    lat = selectedCity.coord.lat,
+                    lon = selectedCity.coord.lon,
+                    cityName = selectedCity.name,
+                    onUpClick = {},
+                    isLandscape = true,
+                )
             } else {
                 Text("Selecciona una ciudad para ver el mapa", textAlign = TextAlign.Center)
             }

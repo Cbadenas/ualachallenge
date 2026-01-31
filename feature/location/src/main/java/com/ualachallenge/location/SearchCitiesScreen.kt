@@ -21,7 +21,7 @@ fun SearchCitiesScreen(
     onCitySelectedForMap: (City) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
-    var selectedCity by rememberSaveable { mutableStateOf<City?>(null) }
+    var selectedCity by rememberSaveable { mutableStateOf<City?>(viewModel.uiState.value.selectedCity) }
 
     LaunchedEffect(Unit) {
         if (uiState.cities.isEmpty()) {
@@ -45,8 +45,10 @@ fun SearchCitiesScreen(
             modifier,
             uiState = uiState,
             onEvent = viewModel::onEvent,
-            // WIP - En modo vertical, la selección de una ciudad invoca la navegación ?
-            onCitySelected = onCitySelectedForMap
+            onCitySelected = { city ->
+                selectedCity = city
+                onCitySelectedForMap.invoke(city)
+            }
         )
     }
 }
