@@ -1,5 +1,12 @@
 # Uala Cities Challenge
 
+## Configs
+
+### Mapa
+- Para el mapa, por razones de seguridad, no hice commit de la ultima Api Key para el mapa.
+  Esta el tag en el manifest para poder agregar la api y poder ver el mapa.
+
+
 ## Descripcion
 
 - Decidi implementar una arquitectura Clean con aplicando el principio hexagonal basado en la idea 
