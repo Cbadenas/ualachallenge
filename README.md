@@ -47,6 +47,7 @@
   - Screens were connected to viewmodel. 
   - Tests for Usecases
   - Fix issue with Lat and Long order when selecting a city.
+- Add Favorite functionality
 
 
 

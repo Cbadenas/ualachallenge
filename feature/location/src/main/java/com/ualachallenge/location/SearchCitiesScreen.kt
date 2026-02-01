@@ -38,7 +38,10 @@ fun SearchCitiesScreen(
             uiState = uiState,
             selectedCity = selectedCity,
             onEvent = viewModel::onEvent,
-            onCitySelected = { city -> selectedCity = city }
+            onCitySelected = { city -> selectedCity = city },
+            onFavoriteClick = {
+                viewModel.onEvent(CityScreenEvent.OnFavoriteClick(it))
+            }
         )
     } else {
         PortraitLayout(
@@ -48,6 +51,9 @@ fun SearchCitiesScreen(
             onCitySelected = { city ->
                 selectedCity = city
                 onCitySelectedForMap.invoke(city)
+            },
+            onFavoriteClick = {
+                viewModel.onEvent(CityScreenEvent.OnFavoriteClick(it))
             }
         )
     }

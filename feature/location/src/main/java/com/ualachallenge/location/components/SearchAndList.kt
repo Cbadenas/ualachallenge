@@ -25,7 +25,8 @@ import com.ualachallenge.location.CityScreenUiState
 fun SearchAndList(
     uiState: CityScreenUiState,
     onEvent: (CityScreenEvent) -> Unit,
-    onCitySelected: (City) -> Unit
+    onCitySelected: (City) -> Unit,
+    onFavoriteClick: (Int) -> Unit
 ) {
     Column {
         OutlinedTextField(
@@ -45,13 +46,19 @@ fun SearchAndList(
                     CircularProgressIndicator()
                 }
             }
+
             is UIStatus.Error -> {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Text(text = status.msg, color = MaterialTheme.colorScheme.error)
                 }
             }
+
             UIStatus.Success, UIStatus.Idle -> {
-                CitiesList(cities = uiState.cities, onCityClick = onCitySelected)
+                CitiesList(
+                    cities = uiState.cities,
+                    onCityClick = onCitySelected,
+                    onFavoriteClick = onFavoriteClick
+                )
             }
         }
     }

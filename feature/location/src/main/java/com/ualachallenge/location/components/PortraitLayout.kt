@@ -13,13 +13,15 @@ fun PortraitLayout(
     modifier: Modifier,
     uiState: CityScreenUiState,
     onEvent: (CityScreenEvent) -> Unit,
-    onCitySelected: (City) -> Unit
+    onCitySelected: (City) -> Unit,
+    onFavoriteClick: (Int) -> Unit
 ) {
     Column(modifier = modifier.fillMaxSize()) {
         SearchAndList(
             uiState = uiState,
             onEvent = onEvent,
-            onCitySelected = onCitySelected
+            onCitySelected = onCitySelected,
+            onFavoriteClick = onFavoriteClick
         )
     }
 }

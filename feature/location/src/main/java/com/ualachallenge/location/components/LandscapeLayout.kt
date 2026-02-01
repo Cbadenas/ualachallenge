@@ -21,14 +21,16 @@ fun LandscapeLayout(
     uiState: CityScreenUiState,
     selectedCity: City?,
     onEvent: (CityScreenEvent) -> Unit,
-    onCitySelected: (City) -> Unit
+    onCitySelected: (City) -> Unit,
+    onFavoriteClick: (Int) -> Unit
 ) {
     Row(modifier = modifier.fillMaxSize()) {
         Box(modifier = Modifier.fillMaxWidth(0.33f)) {
             SearchAndList(
                 uiState = uiState,
                 onEvent = onEvent,
-                onCitySelected = onCitySelected
+                onCitySelected = onCitySelected,
+                onFavoriteClick = onFavoriteClick
             )
         }
 

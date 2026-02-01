@@ -8,5 +8,6 @@ data class City(
     val country: String,
     val name: String,
     val id: Int,
-    val coord: Coord
+    val coord: Coord,
+    val isFavorite: Boolean = false
 ) : Parcelable
