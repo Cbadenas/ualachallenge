@@ -2,7 +2,8 @@ package com.ualachallenge.di
 
 import com.ualachallenge.domain.city.GetAllCitiesUseCase
 import com.ualachallenge.domain.city.GetCitiesByCriteriaUsecase
-import com.ualachallenge.network.adapters.CityRepositoryAdapter
+import com.ualachallenge.domain.city.RemoveFavoritedCityUsecase
+import com.ualachallenge.domain.city.SaveFavoritedCityUsecase
 import com.ualachallenge.ports.CityRepositoryPort
 import dagger.Module
 import dagger.Provides
@@ -28,6 +29,14 @@ object CityModule {
 
     @Provides fun provideCitiesUsecase(repo: CityRepositoryPort) = GetAllCitiesUseCase(repo)
 
-    @Provides fun provideSearchByCriteriaCitiesUsecase(repo: CityRepositoryPort) = GetCitiesByCriteriaUsecase(repo)
+    @Provides fun provideSearchByCriteriaCitiesUsecase(repo: CityRepositoryPort) =
+        GetCitiesByCriteriaUsecase(repo)
+
+    @Provides fun providesaveFavoriteCityUseCase(repo: CityRepositoryPort) =
+        SaveFavoritedCityUsecase(repo)
+
+    @Provides fun provideremoveFavoriteCityUseCase(repo: CityRepositoryPort) =
+        RemoveFavoritedCityUsecase(repo)
+
 
 }

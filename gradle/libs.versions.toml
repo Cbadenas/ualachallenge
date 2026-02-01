@@ -25,6 +25,9 @@ composeCompiler = "1.7.1"
 maps-compose = "4.4.1"
 play-services-maps = "20.0.0"
 
+room = "2.8.4"
+ksp = "2.0.21-1.0.28"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -60,6 +63,10 @@ androidx-compose-material-icons-extended = { group = "androidx.compose.material"
 maps-compose = { group = "com.google.maps.android", name = "maps-compose", version.ref = "maps-compose" }
 play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "play-services-maps" }
 
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
@@ -69,3 +76,5 @@ android-library = { id = "com.android.library", version.ref = "agp" }
 
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 dagger-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+
+devtools-ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
