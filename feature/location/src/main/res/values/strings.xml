@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Uala Challenge</string>
+
+    <!-- CityDetailScreen -->
+    <string name="city_detail_title">Detalle de Ciudad</string>
+    <string name="city_detail_country">País: %1$s</string>
+    <string name="city_detail_id">ID: %1$s</string>
+    <string name="city_detail_coordinates">Coordenadas</string>
+    <string name="city_detail_latitude">Latitud: %1$s</string>
+    <string name="city_detail_longitude">Longitud: %1$s</string>
+    <string name="city_detail_loading">Cargando detalles de la ciudad…</string>
+
+    <!-- MapScreen -->
+    <string name="map_screen_title">Mapa</string>
+    <string name="map_selected_location">Ubicación seleccionada</string>
+    <string name="map_button_see_details">Ver detalles</string>
+    <string name="cd_map_see_details_icon">Ver detalles de la ciudad</string>
+
+    <!-- Search/List Screen -->
+    <string name="search_textfield_placeholder">Buscar ciudad…</string>
+    <string name="list_empty_state">No se encontraron ciudades.</string>
+    <string name="cd_search_icon">Buscar</string>
+    <string name="cd_clear_search_icon">Limpiar búsqueda</string>
+
+    <!-- Landscape Layout -->
+    <string name="landscape_prompt">Selecciona una ciudad para ver el mapa</string>
+
+</resources>
