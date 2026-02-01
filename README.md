@@ -12,10 +12,10 @@
     entre los viewmodels y los repos. Si en el futuro los usecase requieren de logica mas compleja,
     la idea seria que los responsables sean estos usecases.
 
-- ViewModel
+- ### ViewModel
   - Para la conexion entre la vista y el viewmodel, decidi usar el patron MVI.
 
-- Views
+- ## Views
   - ### MainActivity -> Cree una vista principal que contiene un Navigation
   - ### MainNavigation -> Define la forma en la que se realiza la navegacion
     - Cree una pantalla llamada SearchCitiesScreen que define 2 composables segun orientacion
@@ -28,7 +28,6 @@
     - ### LandscapeLayout 
       - Se muestra la lista de ciudades a la izquierda y a la derecha
         el mapa, segun los wireframes.
-      
 
   
 ## added
@@ -48,6 +47,10 @@
   - Tests for Usecases
   - Fix issue with Lat and Long order when selecting a city.
 - Add Favorite functionality
+- Add Details Screen
+- String config file was added.
+  - Strings were replaced
+- Fix Criteria search to not ignore case sensitive chars
 
 
 

@@ -18,7 +18,8 @@ import com.ualachallenge.location.components.PortraitLayout
 fun SearchCitiesScreen(
     viewModel: CitiesViewModel = hiltViewModel(),
     modifier: Modifier,
-    onCitySelectedForMap: (City) -> Unit
+    onCitySelectedForMap: (City) -> Unit,
+    onNavigateToDetails: (Int) -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
     var selectedCity by rememberSaveable { mutableStateOf<City?>(viewModel.uiState.value.selectedCity) }
@@ -41,7 +42,10 @@ fun SearchCitiesScreen(
             onCitySelected = { city -> selectedCity = city },
             onFavoriteClick = {
                 viewModel.onEvent(CityScreenEvent.OnFavoriteClick(it))
-            }
+            },
+            onNavigateToDetails = {
+                onNavigateToDetails(selectedCity!!.id)
+            },
         )
     } else {
         PortraitLayout(

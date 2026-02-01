@@ -15,10 +15,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-    /**
-     * Proporciona una instancia Singleton de la base de datos Room.
-     * Hilt necesita el Context de la aplicación para construir la base de datos.
-     */
     @Provides
     @Singleton
     fun provideUalaChallengeDatabase(@ApplicationContext context: Context): UalaChallengeDatabase {
@@ -29,10 +25,6 @@ object DatabaseModule {
         ).build()
     }
 
-    /**
-     * Proporciona una instancia del DAO a partir de la base de datos.
-     * Hilt sabe cómo crear la base de datos (del método de arriba) y la usa para proveer el DAO.
-     */
     @Provides
     @Singleton
     fun provideFavoriteCityDao(database: UalaChallengeDatabase): FavoriteCityDao {

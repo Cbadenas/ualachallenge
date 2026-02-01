@@ -43,7 +43,7 @@ class CityRepositoryAdapter @Inject constructor(
             val citiesResult = getCities()
             if (citiesResult.isSuccess) {
                 val allCities = citiesResult.getOrThrow()
-                val filteredCities = allCities.filter { it.name.contains(criteria, ignoreCase = true) }
+                val filteredCities = allCities.filter { it.name.contains(criteria, ignoreCase = false) }
                 Result.success(filteredCities)
             } else {
                 citiesResult // Propagamos el error si lo hubo

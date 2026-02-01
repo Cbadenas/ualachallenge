@@ -15,11 +15,13 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.ualachallenge.common.UIStatus
 import com.ualachallenge.domain.city.City
 import com.ualachallenge.location.CityScreenEvent
 import com.ualachallenge.location.CityScreenUiState
+import com.ualachallenge.location.R
 
 @Composable
 fun SearchAndList(
@@ -35,7 +37,7 @@ fun SearchAndList(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(16.dp),
-            label = { Text("Buscar ciudad...") },
+            label = { Text(stringResource(R.string.search_textfield_placeholder)) },
             leadingIcon = { Icon(Icons.Default.Search, contentDescription = null) },
             singleLine = true
         )
