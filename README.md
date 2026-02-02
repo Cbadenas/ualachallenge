@@ -1,18 +1,25 @@
 # Uala Cities Challenge
 
 ## Configs
-
 ### Mapa
 - Para el mapa, por razones de seguridad, no hice commit de la ultima Api Key para el mapa.
   Esta el tag en el manifest para poder agregar la api y poder ver el mapa.
 
-
 ## Descripcion
 
-- Decidi implementar una arquitectura Clean con aplicando el principio hexagonal basado en la idea 
+- Para resolver el consumo de la info y la busqueda, decidi tomar el json proporcionado y 
+  agregarlo al proyecto como un archivo json, el cual, mediante un objeto "helper", realizo 
+  la carga de datos, y los accedo mediante el uso de un repositorio.
+  Este repositorio define, principalmente:
+    - GetAll -> Levanta todo el archivo
+    - SearchByCriteria -> Busca en los registros guardados, todos aquellos que coincidan con la busqueda
+  Internamente, el repositorio hace una primera pegada y guarda en memoria los registros, para no
+  tener que volver a acceder a los registros levantandolo nuevamente del json.
+  
+
+- Decidi implementar una arquitectura Clean aplicando el principio hexagonal basado en la idea 
   de tener una separacion lo mas clara posible, con la comunicacion entre capas bien definida.
-  - Por que ?
-    - Pense el proyecto como la base de una implementacion aun mayor.
+  Por que ? Pense el proyecto como la base de una implementacion aun mayor.
 
 - ### Usecases
   - Para el caso de los usecases, decidi que, para esta implementacion, solo sean un "pasa manos"
